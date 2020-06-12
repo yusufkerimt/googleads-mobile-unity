@@ -21,7 +21,7 @@ using UnityEngine;
 namespace GoogleMobileAds.Common
 {
     public class DummyClient : IBannerClient, IInterstitialClient, IRewardBasedVideoAdClient,
-            IAdLoaderClient, IMobileAdsClient
+            IMobileAdsClient
     {
         public DummyClient()
         {
@@ -49,9 +49,6 @@ namespace GoogleMobileAds.Common
 
         public event EventHandler<AdValueEventArgs> OnPaidEvent;
 
-        public event EventHandler<CustomNativeClientEventArgs> OnCustomNativeTemplateAdLoaded;
-
-        public event EventHandler<CustomNativeClientEventArgs> OnCustomNativeTemplateAdClicked;
 #pragma warning restore 67
 
         public string UserId
@@ -217,11 +214,6 @@ namespace GoogleMobileAds.Common
         }
 
         public void ShowRewardBasedVideoAd()
-        {
-            Debug.Log("Dummy " + MethodBase.GetCurrentMethod().Name);
-        }
-
-        public void CreateAdLoader(AdLoaderClientArgs args)
         {
             Debug.Log("Dummy " + MethodBase.GetCurrentMethod().Name);
         }

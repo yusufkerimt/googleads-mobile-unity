@@ -28,8 +28,6 @@ namespace GoogleMobileAds
 
         IRewardedAdClient BuildRewardedAdClient();
 
-        IAdLoaderClient BuildAdLoaderClient(AdLoaderClientArgs args);
-
         IMobileAdsClient MobileAdsInstance();
     }
 }

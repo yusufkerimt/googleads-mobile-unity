@@ -72,17 +72,6 @@ namespace GoogleMobileAds
           }
         }
 
-        public IAdLoaderClient BuildAdLoaderClient(AdLoaderClientArgs args)
-        {
-          if (Application.platform == RuntimePlatform.Android)
-          {
-              return new GoogleMobileAds.Android.AdLoaderClient(args);
-          }
-          {
-            return new GoogleMobileAds.Common.DummyClient();
-          }
-        }
-
         public IMobileAdsClient MobileAdsInstance()
         {
           if (Application.platform == RuntimePlatform.Android)
