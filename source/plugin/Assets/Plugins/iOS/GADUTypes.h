@@ -82,6 +82,9 @@ typedef const void *GADUTypeRequestConfigurationRef;
 /// Type representing a GADUTypeResponseInfoRef
 typedef const void *GADUTypeResponseInfoRef;
 
+/// Type representing a AdError type
+typedef const void *GADUTypeErrorRef;
+
 /// Type representing a NSMutableDictionary of extras.
 typedef const void *GADUTypeMutableDictionaryRef;
 
@@ -191,7 +194,7 @@ typedef void (*GADURewardedAdDidFailToReceiveAdWithErrorCallback)(
 
 /// Callback for when a rewarded ad failed to show.
 typedef void (*GADURewardedAdDidFailToShowAdWithErrorCallback)(
-    GADUTypeRewardedAdClientRef *rewardedAdClient, const char *error);
+    GADUTypeRewardedAdClientRef *rewardedAdClient, const GADUTypeErrorRef error);
 
 /// Callback for when a rewarded ad is opened.
 typedef void (*GADURewardedAdDidOpenCallback)(GADUTypeRewardedAdClientRef *rewardedAdClient);

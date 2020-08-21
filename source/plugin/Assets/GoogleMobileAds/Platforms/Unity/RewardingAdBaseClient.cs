@@ -26,17 +26,18 @@ namespace GoogleMobileAds.Unity
     // A base client for rewarding ad types for Unity editor platform.
     public class RewardingAdBaseClient : BaseAdDummyClient
     {
+        private DummyClient client = new DummyClient();
         // Ad event fired when the rewarding ad has been received.
         public event EventHandler<EventArgs> OnAdLoaded;
         // Ad event fired when the rewarding ad has failed to load.
-        public event EventHandler<AdFailedToLoadEventArgs> OnAdFailedToLoad;
+        public event EventHandler<LoadAdErrorClientEventArgs> OnAdFailedToLoad;
         // Ad event fired when the rewarding ad is estimated to have earned money.
         public event EventHandler<AdValueEventArgs> OnPaidEvent;
         // Ad event fired when the rewarding ad has rewarded the user.
         public event EventHandler<Reward> OnUserEarnedReward;
 
         // Full screen content events
-        public event EventHandler<AdErrorEventArgs> OnAdFailedToPresentFullScreenContent;
+        public event EventHandler<AdErrorClientEventArgs> OnAdFailedToPresentFullScreenContent;
 
         public event EventHandler<EventArgs> OnAdDidPresentFullScreenContent;
 
@@ -113,8 +114,9 @@ namespace GoogleMobileAds.Unity
             {
                 if (OnAdFailedToLoad != null)
                 {
-                    OnAdFailedToLoad.Invoke(this, new AdFailedToLoadEventArgs()
+                    OnAdFailedToLoad.Invoke(this, new LoadAdErrorClientEventArgs()
                     {
+                        LoadAdErrorClient = new LoadAdErrorClient(),
                         Message = "Prefab Ad is Null"
                     });
                 }
@@ -163,8 +165,9 @@ namespace GoogleMobileAds.Unity
             {
                 if (OnAdFailedToPresentFullScreenContent != null)
                 {
-                    OnAdFailedToPresentFullScreenContent.Invoke(this, new AdErrorEventArgs()
+                    OnAdFailedToPresentFullScreenContent.Invoke(this, new AdErrorClientEventArgs()
                     {
+                        AdErrorClient = new AdErrorClient(),
                         Message = "No Ad Loaded"
                     });
                 }
